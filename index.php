@@ -15,14 +15,26 @@
 // along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 
 /**
- * Strings for component 'tool_pluginmaker'
+ * Plugin Maker
  *
  * @package    tool_pluginmaker
  * @copyright  2013 Chris Throup <chris@throup.org.uk>
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
-$string['pluginname'] = 'Plugin Maker';
-$string['introduction'] = 'The Plugin Maker helps you create new plugins for Moodle.';
-$string['selectplugintype'] = 'Select the plugin type to create.';
+require(dirname(__FILE__) . '/../../../config.php');
+require_once($CFG->libdir.'/adminlib.php');
+require_once(dirname(__FILE__) . '/locallib.php');
 
+admin_externalpage_setup('toolpluginmaker');
+
+echo $OUTPUT->header();
+echo $OUTPUT->heading(get_string('pluginname', 'tool_pluginmaker'));
+echo $OUTPUT->box_start();
+
+$maker = new PluginMaker();
+$maker->viewselector();
+// TODO: content here
+
+echo $OUTPUT->box_end();
+echo $OUTPUT->footer();

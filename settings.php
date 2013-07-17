@@ -15,14 +15,17 @@
 // along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 
 /**
- * Strings for component 'tool_pluginmaker'
+ * Plugin Maker
  *
  * @package    tool_pluginmaker
  * @copyright  2013 Chris Throup <chris@throup.org.uk>
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
-$string['pluginname'] = 'Plugin Maker';
-$string['introduction'] = 'The Plugin Maker helps you create new plugins for Moodle.';
-$string['selectplugintype'] = 'Select the plugin type to create.';
 
+defined('MOODLE_INTERNAL') || die;
+
+if ($hassiteconfig) {
+    $ADMIN->add('development', new admin_externalpage('toolpluginmaker', get_string('pluginname', 'tool_pluginmaker'), "$CFG->wwwroot/$CFG->admin/tool/pluginmaker/index.php"));
+//    $ADMIN->add('development', new admin_externalpage('toolphpunitwebrunner', get_string('pluginname', 'tool_phpunit'), "$CFG->wwwroot/$CFG->admin/tool/phpunit/webrunner.php", 'moodle/site:config', true));
+}
